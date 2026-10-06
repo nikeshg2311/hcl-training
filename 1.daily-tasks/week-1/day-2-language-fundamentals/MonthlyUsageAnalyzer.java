@@ -5,6 +5,7 @@ public class MonthlyUsageAnalyzer {
 
     public static void main(String[] args) {
 
+        // 12 months of usage
         int[] monthlyUsage = {
                 120, 150, 100, 180,
                 200, 170, 160, 190,
@@ -45,12 +46,33 @@ public class MonthlyUsageAnalyzer {
         System.out.println("Maximum int : " + maxInt);
         System.out.println("After +1   : " + (maxInt + 1));
 
-        // Fixed overflow using long
+        // Fix overflow using long
         long safeValue = (long) Integer.MAX_VALUE + 1;
 
         System.out.println("\n===== Fixed Using long =====");
 
         System.out.println("Safe value  : " + safeValue);
+
+        // Widening conversion
+        int smallNumber = 100;
+        long widenedNumber = smallNumber;
+
+        // Narrowing conversion
+        long largeNumber = 1000L;
+        int narrowedNumber = (int) largeNumber;
+
+        System.out.println("\n===== Type Casting =====");
+
+        System.out.println("Widening int -> long : " + widenedNumber);
+        System.out.println("Narrowing long -> int : " + narrowedNumber);
+
+        // Floating-point precision
+        double a = 0.1;
+        double b = 0.2;
+
+        System.out.println("\n===== Floating Point Precision =====");
+
+        System.out.println("0.1 + 0.2 = " + (a + b));
 
         // 2-D array for 3 houses and 1 week
         int[][] houseUsage = {
