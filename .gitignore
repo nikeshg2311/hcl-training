@@ -1,23 +1,24 @@
-# Java
+# Java compiled files
 *.class
-*.jar
-out/
-target/
 
-# IntelliJ
+# Java build folders
+target/
+out/
+
+# IntelliJ IDEA
 .idea/
 *.iml
 
 # VS Code
 .vscode/
 
-# OS files
-.DS_Store
-Thumbs.db
-
 # Logs
 *.log
 
-# Environment / secrets
+# Environment files
 .env
 .env.*
+
+# OS files
+Thumbs.db
+.DS_Store
