@@ -1,8 +1,5 @@
 public class MonthlyUsageAnalyzer {
 
-    // Constant
-    static final int MONTHS = 12;
-
     public static void main(String[] args) {
 
         // 12 months of usage
@@ -29,7 +26,8 @@ public class MonthlyUsageAnalyzer {
             }
         }
 
-        double average = (double) total / MONTHS;
+        // Using the constant from Constants.java
+        double average = (double) total / Constants.MONTHS;
 
         System.out.println("===== Monthly Usage Analyzer =====");
 
