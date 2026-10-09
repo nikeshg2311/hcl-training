@@ -1,8 +1,7 @@
+
 package model;
 
-import java.time.LocalDateTime;
-
-public class Ticket {
+public class Ticket extends BaseEntity {
 
     private Long ticketId;
     private String title;
@@ -12,15 +11,16 @@ public class Ticket {
     private String status;
     private String createdBy;
     private String assignedTo;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
 
     public Ticket() {
+        super();
     }
 
     public Ticket(Long ticketId, String title, String description,
-                   String category, String priority, String status,
-                   String createdBy, String assignedTo) {
+                  String category, String priority, String status,
+                  String createdBy, String assignedTo) {
+
+        super();
 
         this.ticketId = ticketId;
         this.title = title;
@@ -30,8 +30,6 @@ public class Ticket {
         this.status = status;
         this.createdBy = createdBy;
         this.assignedTo = assignedTo;
-        this.createdAt = LocalDateTime.now();
-        this.updatedAt = LocalDateTime.now();
     }
 
     public Long getTicketId() {
@@ -40,6 +38,7 @@ public class Ticket {
 
     public void setTicketId(Long ticketId) {
         this.ticketId = ticketId;
+        updateTimestamp();
     }
 
     public String getTitle() {
@@ -48,6 +47,7 @@ public class Ticket {
 
     public void setTitle(String title) {
         this.title = title;
+        updateTimestamp();
     }
 
     public String getDescription() {
@@ -56,6 +56,7 @@ public class Ticket {
 
     public void setDescription(String description) {
         this.description = description;
+        updateTimestamp();
     }
 
     public String getCategory() {
@@ -64,6 +65,7 @@ public class Ticket {
 
     public void setCategory(String category) {
         this.category = category;
+        updateTimestamp();
     }
 
     public String getPriority() {
@@ -72,6 +74,7 @@ public class Ticket {
 
     public void setPriority(String priority) {
         this.priority = priority;
+        updateTimestamp();
     }
 
     public String getStatus() {
@@ -80,6 +83,7 @@ public class Ticket {
 
     public void setStatus(String status) {
         this.status = status;
+        updateTimestamp();
     }
 
     public String getCreatedBy() {
@@ -88,6 +92,7 @@ public class Ticket {
 
     public void setCreatedBy(String createdBy) {
         this.createdBy = createdBy;
+        updateTimestamp();
     }
 
     public String getAssignedTo() {
@@ -96,14 +101,7 @@ public class Ticket {
 
     public void setAssignedTo(String assignedTo) {
         this.assignedTo = assignedTo;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
+        updateTimestamp();
     }
 
     @Override

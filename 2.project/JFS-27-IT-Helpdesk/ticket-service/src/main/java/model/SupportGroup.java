@@ -1,6 +1,7 @@
+
 package model;
 
-public class SupportGroup {
+public class SupportGroup extends BaseEntity {
 
     private Long groupId;
     private String groupName;
@@ -9,11 +10,14 @@ public class SupportGroup {
     private String teamLead;
 
     public SupportGroup() {
+        super();
     }
 
     public SupportGroup(Long groupId, String groupName,
                         String description, String category,
                         String teamLead) {
+
+        super();
 
         this.groupId = groupId;
         this.groupName = groupName;
@@ -28,6 +32,7 @@ public class SupportGroup {
 
     public void setGroupId(Long groupId) {
         this.groupId = groupId;
+        updateTimestamp();
     }
 
     public String getGroupName() {
@@ -36,6 +41,7 @@ public class SupportGroup {
 
     public void setGroupName(String groupName) {
         this.groupName = groupName;
+        updateTimestamp();
     }
 
     public String getDescription() {
@@ -44,6 +50,7 @@ public class SupportGroup {
 
     public void setDescription(String description) {
         this.description = description;
+        updateTimestamp();
     }
 
     public String getCategory() {
@@ -52,6 +59,7 @@ public class SupportGroup {
 
     public void setCategory(String category) {
         this.category = category;
+        updateTimestamp();
     }
 
     public String getTeamLead() {
@@ -60,6 +68,7 @@ public class SupportGroup {
 
     public void setTeamLead(String teamLead) {
         this.teamLead = teamLead;
+        updateTimestamp();
     }
 
     @Override
