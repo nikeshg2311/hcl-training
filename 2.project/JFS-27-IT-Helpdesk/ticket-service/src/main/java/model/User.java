@@ -1,6 +1,7 @@
+
 package model;
 
-public class User {
+public class User extends BaseEntity {
 
     private Long userId;
     private String name;
@@ -9,10 +10,13 @@ public class User {
     private String supportGroup;
 
     public User() {
+        super();
     }
 
     public User(Long userId, String name, String email,
                 String role, String supportGroup) {
+
+        super();
 
         this.userId = userId;
         this.name = name;
@@ -27,6 +31,7 @@ public class User {
 
     public void setUserId(Long userId) {
         this.userId = userId;
+        updateTimestamp();
     }
 
     public String getName() {
@@ -35,6 +40,7 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
+        updateTimestamp();
     }
 
     public String getEmail() {
@@ -43,6 +49,7 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+        updateTimestamp();
     }
 
     public String getRole() {
@@ -51,6 +58,7 @@ public class User {
 
     public void setRole(String role) {
         this.role = role;
+        updateTimestamp();
     }
 
     public String getSupportGroup() {
@@ -59,6 +67,7 @@ public class User {
 
     public void setSupportGroup(String supportGroup) {
         this.supportGroup = supportGroup;
+        updateTimestamp();
     }
 
     @Override
