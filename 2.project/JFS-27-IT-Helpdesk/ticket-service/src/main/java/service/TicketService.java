@@ -3,6 +3,7 @@ package service;
 import model.Ticket;
 import java.util.ArrayList;
 import java.util.List;
+import exception.TicketNotFoundException;
 
 public class TicketService {
 
@@ -40,16 +41,16 @@ public class TicketService {
     }
 
     // Find a ticket using its ID
-    public Ticket getTicketById(Long ticketId) {
+public Ticket getTicketById(Long ticketId) {
 
-        for (Ticket ticket : tickets) {
-            if (ticket.getTicketId().equals(ticketId)) {
-                return ticket;
-            }
+    for (Ticket ticket : tickets) {
+        if (ticket.getTicketId().equals(ticketId)) {
+            return ticket;
         }
-
-        return null;
     }
+
+    throw new TicketNotFoundException(ticketId);
+}
 
     // Update a ticket's status
     public boolean updateTicketStatus(
