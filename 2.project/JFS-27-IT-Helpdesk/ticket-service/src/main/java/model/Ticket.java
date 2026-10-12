@@ -11,6 +11,7 @@ public class Ticket extends BaseEntity {
     private String status;
     private String createdBy;
     private String assignedTo;
+    private String notes;
 
     public Ticket() {
         super();
@@ -101,6 +102,15 @@ public class Ticket extends BaseEntity {
 
     public void setAssignedTo(String assignedTo) {
         this.assignedTo = assignedTo;
+        updateTimestamp();
+    }
+    
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
         updateTimestamp();
     }
 

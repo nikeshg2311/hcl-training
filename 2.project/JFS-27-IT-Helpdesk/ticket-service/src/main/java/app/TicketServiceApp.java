@@ -1,3 +1,4 @@
+
 package app;
 
 import model.Ticket;
@@ -72,6 +73,42 @@ public class TicketServiceApp {
         } catch (IllegalArgumentException e) {
             System.out.println("Duplicate rejected: " + e.getMessage());
         }
+
+        // Test support group Set
+        System.out.println("\n===== TEST SUPPORT GROUP SET =====");
+        service.addSupportGroup("Hardware");
+        service.addSupportGroup("Software");
+        service.addSupportGroup("Hardware");
+
+        System.out.println(
+                "Registered groups: " + service.getSupportGroups()
+        );
+
+        // Test pending ticket Queue
+        System.out.println("\n===== TEST PENDING TICKET QUEUE =====");
+        service.enqueueTicket(101L);
+        service.enqueueTicket(102L);
+
+        service.processNextPendingTicket();
+        service.processNextPendingTicket();
+        service.processNextPendingTicket();
+
+        // Test FR3: update status, priority, and notes
+        System.out.println(
+                "\n===== TEST UPDATE STATUS, PRIORITY AND NOTES ====="
+        );
+
+        service.updateTicketDetails(
+                101L,
+                "IN_PROGRESS",
+                "HIGH",
+                "Assigned to hardware team for investigation."
+        );
+
+        Ticket updatedTicket = service.getTicketById(101L);
+
+        System.out.println("Updated ticket: " + updatedTicket);
+        System.out.println("Updated notes: " + updatedTicket.getNotes());
 
         // Test ticket deletion
         System.out.println("\n===== TEST DELETE TICKET =====");
