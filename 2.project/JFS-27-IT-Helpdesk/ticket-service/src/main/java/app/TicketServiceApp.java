@@ -110,8 +110,63 @@ public class TicketServiceApp {
         System.out.println("Updated ticket: " + updatedTicket);
         System.out.println("Updated notes: " + updatedTicket.getNotes());
 
+        // FR4: Test SLA tracking
+        System.out.println("\n===== FR4: SLA TRACKING =====");
+
+        service.setSlaDeadline(101L, 24);
+
+        System.out.println(
+                "Hours remaining: "
+                        + service.getSlaHoursRemaining(101L)
+        );
+
+        System.out.println(
+                "SLA breached: " + service.isSlaBreached(101L)
+        );
+
+        // FR5: Test ticket reassignment
+        System.out.println("\n===== FR5: TEAM LEAD REASSIGNMENT =====");
+
+        service.reassignTicket(101L, "Agent2");
+
+        System.out.println(
+                "Ticket after reassignment: "
+                        + service.getTicketById(101L)
+        );
+
+        // FR6: Test Knowledge Base article linking
+        System.out.println("\n===== FR6: KNOWLEDGE BASE LINKING =====");
+
+        service.linkKbArticle(
+                101L, "KB-001: Laptop Troubleshooting"
+        );
+
+        service.linkKbArticle(
+                101L, "https://help.example.com/laptop"
+        );
+
+        System.out.println(
+                "Linked KB articles: "
+                        + service.getLinkedKbArticles(101L)
+        );
+
+        // Day 8: Test tickets sorted by ID
+        System.out.println("\n===== TICKETS SORTED BY ID =====");
+
+        for (Ticket ticket : service.getTicketsSortedById()) {
+            System.out.println(ticket);
+        }
+
+        // Day 8: Test tickets sorted by priority
+        System.out.println("\n===== TICKETS SORTED BY PRIORITY =====");
+
+        for (Ticket ticket : service.getTicketsSortedByPriority()) {
+            System.out.println(ticket);
+        }
+
         // Test ticket deletion
         System.out.println("\n===== TEST DELETE TICKET =====");
+
         boolean deleted = service.deleteTicket(102L);
 
         if (!deleted) {
@@ -120,6 +175,7 @@ public class TicketServiceApp {
 
         // Verify deletion using the custom exception
         System.out.println("\n===== VERIFY DELETION =====");
+
         try {
             service.getTicketById(102L);
         } catch (TicketNotFoundException e) {

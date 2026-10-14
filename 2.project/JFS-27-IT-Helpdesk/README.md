@@ -1,138 +1,19 @@
-\# JFS-27 - IT Helpdesk \& Service Desk Ticketing
+## JFS-27 Project Integration
 
+### Map-Based Ticket Storage
+Updated `TicketService` to store tickets in a `LinkedHashMap`, using ticket IDs as keys. This supports direct ticket lookup while preserving insertion order.
 
+### FR4 – SLA Tracking
+Implemented methods to set an SLA deadline, check whether a deadline has been breached, and calculate the remaining hours. The current prototype uses elapsed hours and does not yet exclude non-working hours.
 
-\## Project Overview
+### FR5 – Ticket Reassignment
+Added functionality to reassign a ticket to another agent. Team Lead authorization still needs to be integrated.
 
+### FR6 – Knowledge Base Linking
+Added functionality to link multiple Knowledge Base article IDs or URLs to a ticket while preventing duplicate links.
 
-
-JFS-27 is an IT Helpdesk and Service Desk Ticketing application.
-
-
-
-The system allows employees to raise IT support tickets and enables
-
-support agents and team leads to manage, assign, resolve, and monitor
-
-those tickets.
-
-
-
-\## Domain
-
-
-
-IT Operations
-
-
-
-\## User Roles
-
-
-
-\- Employee
-
-\- Agent
-
-\- Team Lead
-
-\- Admin
-
-
-
-\## Key Features
-
-
-
-\- Ticket creation
-
-\- Automatic ticket assignment
-
-\- SLA tracking
-
-\- SLA breach detection
-
-\- Ticket reassignment
-
-\- Knowledge Base integration
-
-\- Ticket reopening
-
-\- CSAT survey
-
-\- Agent performance dashboard
-
-
-
-\## Planned Technology Stack
-
-
-
-\- Java
-
-\- Spring Boot
-
-\- Spring Security
-
-\- React
-
-\- PostgreSQL
-
-\- REST APIs
-
-\- Microservices
-
-\- Git and GitHub
-
-
-
-\## Project Architecture
-
-
-
-The project will eventually be divided into functional services such as:
-
-
-
-\- Authentication/User Service
-
-\- Ticket Service
-
-\- Assignment Service
-
-\- Knowledge Base Service
-
-\- SLA Service
-
-\- Reporting Service
-
-
-
-\## Current Status
-
-
-
-Requirements analysis and initial project setup.
-
-
-## OOP Design and Ticket Assignment
-
-### BaseEntity
-A shared abstract class containing creation and update timestamps.
-
-### Inheritance
-`Ticket`, `User`, and `SupportGroup` extend `BaseEntity` to reuse common timestamp functionality.
-
-### Strategy Pattern
-The ticket service supports two assignment strategies:
-
-- `RoundRobinAssignmentStrategy` — assigns tickets to agents in rotation.
-- `CategoryAssignmentStrategy` — selects an agent based on the ticket category.
-
-Both implement the `AssignmentStrategy` interface, allowing assignment behavior to be selected through a common contract.
+### Sorted Reports
+Implemented reports that sort tickets by ID and by priority, using Comparators.
 
 ### Verification
-- `mvn clean package` — BUILD SUCCESS
-- Round-robin assignment demonstrated with multiple agents.
-- Category-based assignment demonstrated for Hardware and Software tickets.
-
+The Maven build succeeded, and `TicketServiceApp` executed successfully. Existing ticket operations and the new Day 8 features were tested using sample tickets.
