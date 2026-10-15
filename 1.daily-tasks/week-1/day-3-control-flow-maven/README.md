@@ -1,8 +1,8 @@
-\# Day 3 - Control Flow + Maven
+# Day 3 - Control Flow + Maven
 
 
 
-\## Objective
+## Objective
 
 
 
@@ -10,37 +10,37 @@ Learn Java control flow statements and Maven project fundamentals.
 
 
 
-\## Topics Covered
+## Topics Covered
 
 
 
-\- if / else
+- if / else
 
-\- switch
+- switch
 
-\- while loop
+- while loop
 
-\- do-while loop
+- do-while loop
 
-\- for-each loop
+- for-each loop
 
-\- break
+- break
 
-\- continue
+- continue
 
-\- Input validation
+- Input validation
 
-\- Maven project structure
+- Maven project structure
 
-\- pom.xml
+- pom.xml
 
-\- Maven lifecycle
+- Maven lifecycle
 
-\- Maven profiles
+- Maven profiles
 
 
 
-\## ATM Simulator
+## ATM Simulator
 
 
 
@@ -48,31 +48,31 @@ The ATM Simulator demonstrates:
 
 
 
-\- PIN authentication
+- PIN authentication
 
-\- Maximum 3 PIN attempts
+- Maximum 3 PIN attempts
 
-\- ATM menu using switch
+- ATM menu using switch
 
-\- Balance checking
+- Balance checking
 
-\- Deposit
+- Deposit
 
-\- Withdrawal
+- Withdrawal
 
-\- Mini statement
+- Mini statement
 
-\- Input validation
+- Input validation
 
-\- Menu repetition using do-while
+- Menu repetition using do-while
 
-\- for-each loop for transactions
+- for-each loop for transactions
 
-\- break and continue
+- break and continue
 
 
 
-\### Default PIN
+### Default PIN
 
 
 
