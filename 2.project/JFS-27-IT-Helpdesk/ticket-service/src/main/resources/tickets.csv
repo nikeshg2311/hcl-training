@@ -1,0 +1,3 @@
+ticketId,title,description,category,priority,status,createdBy,assignedTo
+101,Laptop issue,Laptop is not starting,Hardware,HIGH,OPEN,Arun,Agent1
+102,Login issue,Unable to log in,Software,MEDIUM,OPEN,Meena,Agent2
