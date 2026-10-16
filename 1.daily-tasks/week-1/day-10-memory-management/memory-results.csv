@@ -1,0 +1,6 @@
+Experiment,Command,Observed Result,Conclusion
+Stack size,"java -Xss256k -cp out app.MemoryLab stack","StackOverflowError caught","The thread stack has a finite size limit"
+Heap limit,"java -Xmx64m -cp out app.MemoryLab heap","OutOfMemoryError caught; approximately 31 MiB allocated","Reachable objects cannot be reclaimed by GC"
+String vs StringBuilder,"java -cp out app.MemoryLab strings","String: 75.3111 ms; StringBuilder: 1.9334 ms","StringBuilder was faster in this run"
+GC logging,"java -Xmx64m -Xlog:gc -cp out app.MemoryLab heap","G1 collection cycles and Full GC attempts observed","GC logs help analyze memory behaviour"
+Integer cache,"java -cp out app.MemoryLab integer","100 == true; 200 == false; 200.equals comparison true","Use equals() to compare Integer values"
