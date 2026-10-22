@@ -15,6 +15,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.function.Supplier;
 
 public class JFS27Menu {
 
@@ -94,30 +95,38 @@ public class JFS27Menu {
         System.out.println("Created ticket: " + ticket);
     }
 
-    private static void assignTicket() {
-        long id = readLong("Ticket ID: ");
-        Ticket ticket = service.getTicketById(id);
+    
+private static void assignTicket() {
+    long id = readLong("Ticket ID: ");
+    Ticket ticket = service.getTicketById(id);
 
-        System.out.println("1. Round-robin assignment");
-        System.out.println("2. Category-based assignment");
-        int type = readInt("Choose strategy: ");
+    System.out.println("1. Round-robin assignment");
+    System.out.println("2. Category-based assignment");
+    int type = readInt("Choose strategy: ");
 
-        if (type == 1) {
-            assignmentStrategy = new RoundRobinAssignmentStrategy();
-        } else if (type == 2) {
-            Map<String, String> categoryMap = new LinkedHashMap<>();
-            categoryMap.put("Hardware", "Agent1");
-            categoryMap.put("Software", "Agent2");
-            assignmentStrategy =
-                    new CategoryAssignmentStrategy(categoryMap);
-        } else {
-            System.out.println("Invalid strategy.");
-            return;
-        }
+    Map<String, String> categoryMap = new LinkedHashMap<>();
+    categoryMap.put("Hardware", "Agent1");
+    categoryMap.put("Software", "Agent2");
 
-        String agent = assignmentStrategy.assignTicket(ticket, agents);
-        service.reassignTicket(id, agent);
+    Map<Integer, Supplier<AssignmentStrategy>> strategies =
+            new LinkedHashMap<>();
+
+    strategies.put(1, RoundRobinAssignmentStrategy::new);
+    strategies.put(2, () -> new CategoryAssignmentStrategy(categoryMap));
+
+    Supplier<AssignmentStrategy> selectedStrategy = strategies.get(type);
+
+    if (selectedStrategy == null) {
+        System.out.println("Invalid strategy.");
+        return;
     }
+
+    assignmentStrategy = selectedStrategy.get();
+
+    String agent = assignmentStrategy.assignTicket(ticket, agents);
+    service.reassignTicket(id, agent);
+}
+
 
     private static void manageTicket() {
         long id = readLong("Ticket ID: ");

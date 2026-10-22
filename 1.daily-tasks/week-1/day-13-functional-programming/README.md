@@ -28,3 +28,26 @@ java FilterEngine
 
 ## Evidence
 Store a screenshot of the successful program output in the `evidence` folder.
+
+## JFS-27 Project Refactoring
+
+Updated `JFS27Menu.java` to use lambda-based strategy selection with
+`Map<Integer, Supplier<AssignmentStrategy>>`.
+
+### Functional Programming Concepts
+- `Supplier<AssignmentStrategy>` supplies the selected assignment strategy.
+- `RoundRobinAssignmentStrategy::new` demonstrates a constructor method reference.
+- `() -> new CategoryAssignmentStrategy(categoryMap)` demonstrates a lambda expression.
+- A map connects menu options to strategy suppliers.
+
+### Validation
+- `mvn clean package` — BUILD SUCCESS across all five Maven modules.
+- Round-robin assignment — Ticket 101 assigned to Agent1.
+- Category-based assignment — Software ticket 102 assigned to Agent2.
+
+Existing validation and error-handling conditions were retained.
+
+### Run the JFS-27 Menu
+From the project root:
+```powershell
+mvn -pl ticket-service exec:java "-Dexec.mainClass=JFS27Menu"
