@@ -1,6 +1,8 @@
 
 package model;
 
+import java.time.LocalDateTime;
+
 public class Ticket extends BaseEntity {
 
     private Long ticketId;
@@ -12,6 +14,9 @@ public class Ticket extends BaseEntity {
     private String createdBy;
     private String assignedTo;
     private String notes;
+
+    // FR7: Records when the ticket was closed.
+    private LocalDateTime closedAt;
 
     public Ticket() {
         super();
@@ -104,13 +109,24 @@ public class Ticket extends BaseEntity {
         this.assignedTo = assignedTo;
         updateTimestamp();
     }
-    
+
     public String getNotes() {
         return notes;
     }
 
     public void setNotes(String notes) {
         this.notes = notes;
+        updateTimestamp();
+    }
+
+    // FR7: Closure timestamp getter.
+    public LocalDateTime getClosedAt() {
+        return closedAt;
+    }
+
+    // FR7: Closure timestamp setter.
+    public void setClosedAt(LocalDateTime closedAt) {
+        this.closedAt = closedAt;
         updateTimestamp();
     }
 
@@ -122,6 +138,7 @@ public class Ticket extends BaseEntity {
                 ", category='" + category + '\'' +
                 ", priority='" + priority + '\'' +
                 ", status='" + status + '\'' +
+                ", closedAt=" + closedAt +
                 '}';
     }
 }
